@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>手写简单的loader及plugins | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/16.e235edcf.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/11.f9b656b5.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/12.c998cec7.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/18.2a329bec.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/9.d8101432.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" class="sidebar-link">vue部分技巧</a></li><li><a href="/NeveSto-Blog/vue/slot.html" class="sidebar-link">vue插槽</a></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable open"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" aria-current="page" class="active sidebar-link">loader-plugins</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/NeveSto-Blog/webpack/loader-plugins.html#手写简单的loader及plugins" class="sidebar-link">手写简单的loader及plugins</a></li></ul></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" class="sidebar-link">vue-cli中vue-config配置</a></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" class="sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="手写简单的loader及plugins"><a href="#手写简单的loader及plugins" class="header-anchor">#</a> 手写简单的loader及plugins</h2> <ul><li>plugins</li></ul> <blockquote><p>理解Compiler（负责编译）<br>
+开发插件首先要知道compiler和 compilation 对象是做什么的<br> <strong>Compiler</strong> 对象包含了当前运行Webpack的配置，包括entry、output、loaders等配置，这个对象在启动Webpack时被实例化，而且是全局唯一的。Plugin可以通过该对象获取到Webpack的配置信息进行处理。<br> <strong>compilation</strong> 代表这一次资源构建的过程，在 compilation 对象中我们可以通过一系列 API 访问/修改本次打包生成的 module、assets 以及 chunks 。</p></blockquote> <ul><li>compiler.hooks.阶段.tap函数('插件名称', (阶段回调参数) =&gt; {});</li></ul> <blockquote><p>常见阶段<br>
+done: new AsyncSeriesHook([&quot;stats&quot;]),//一次编译完成后执行，回调参数：stats<br>
+beforeRun: new AsyncSeriesHook([&quot;compiler&quot;]),<br>
+run: new AsyncSeriesHook([&quot;compiler&quot;]),//在编译器开始读取记录前执行<br>
+emit: new AsyncSeriesHook([&quot;compilation&quot;]),//在生成文件到output目录之前执行，回调参数： compilation<br>
+afterEmit: new AsyncSeriesHook([&quot;compilation&quot;]),//在生成文件到output目录之后执行<br>
+compilation: new SyncHook([&quot;compilation&quot;, &quot;params&quot;]),//在一次compilation创建后执行插件<br>
+beforeCompile: new AsyncSeriesHook([&quot;params&quot;]),<br>
+compile: new SyncHook([&quot;params&quot;]),//在一个新的compilation创建之前执行<br>
+make:new AsyncParallelHook([&quot;compilation&quot;]),//完成一次编译之前执行</p></blockquote> <blockquote><p>tap函数<br>
+tap 同步钩子<br>
+tapAsync 异步钩子，通过callback回调告诉Webpack异步执行完毕<br>
+tapPromise 异步钩子，返回一个Promise告诉Webpack异步执行完毕</p></blockquote> <h4 id="举个栗子-手写一个打包完成压缩插件"><a href="#举个栗子-手写一个打包完成压缩插件" class="header-anchor">#</a> 举个栗子：手写一个打包完成压缩插件</h4> <div class="language- extra-class"><pre class="language-text"><code>// plugin.js
+const JSZip = require('jszip') // jszip是一个用于创建、读取和编辑.zip文件
+const { RawSource } = require('webpack-sources') // 用于写入webpack打包的二进制文件, 可以看做是一个buffer包装层
+class ZipPlugins {
+    constructor(options) {
+        console.log(options, 'options')
+        this.options = options
+    }
+    apply(complier) {
+        complier.hooks.emit.tapAsync('Zip', (compi, callback) =&gt; {
+            const zip = new JSZip()
+            for (const item in compi.assets) {
+                const sources = compi.assets[item].source() 
+                zip.file(item, sources)  // 使用.file(fileName,fileContent)添加文件
+            }
+            zip.generateAsync({ type: 'nodebuffer' }).then(content =&gt; { // 生成文件
+                compi.assets[this.options.name || 'dist.zip'] = new RawSource(content)
+                callback()
+            })
+        })
+    }
+}
+module.exports = ZipPlugins 
+</code></pre></div><h5 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h5> <div class="language- extra-class"><pre class="language-text"><code>// vue.config.js
+const ZipPlugins = require('./plugins')
+configureWebpack: {
+        ...,
+        plugins: [
+            new ZipPlugins({ name: 'sxl.zip' })
+        ]
+    },
+</code></pre></div><ul><li>loader</li></ul> <blockquote><p>其实loader就是个函数，他的参数是这个loader匹配到的源文件，它的返回值就是模块处理后的结果</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>// jsloader.js
+const loadUtils = require('loader-utils') // loader-utils是一个webpack工具类,通过一些方法配合loader处理文件
+module.exports = function(source) {
+    const options = loadUtils.getOptions(this)
+    console.log(options, source)
+    const result = source.replace('123123123', options.name)
+    this.callback(null, result)
+} 
+
+</code></pre></div><ul><li>loader使用</li></ul> <div class="language- extra-class"><pre class="language-text"><code>chainWebpack: (config) =&gt; {
+    config.module
+            .rule('js')
+            .test(/\.js$/)
+            .use('./jsloader.js')
+            .loader('./jsloader.js')
+            .options({
+                name: '下载1111'
+            })
+            .end()
+}
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/webpack/structure.html" class="prev">
+        webpack构建
+      </a></span> <span class="next"><a href="/NeveSto-Blog/webpack/vue-cli-config.html">
+        vue-cli中vue-config配置
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/16.e235edcf.js" defer></script>
+  </body>
+</html>

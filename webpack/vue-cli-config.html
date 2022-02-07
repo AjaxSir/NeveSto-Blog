@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基本配置 | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/18.2a329bec.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/11.f9b656b5.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/12.c998cec7.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/16.e235edcf.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/9.d8101432.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" class="sidebar-link">vue部分技巧</a></li><li><a href="/NeveSto-Blog/vue/slot.html" class="sidebar-link">vue插槽</a></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable open"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" class="sidebar-link">loader-plugins</a></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" aria-current="page" class="active sidebar-link">vue-cli中vue-config配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/NeveSto-Blog/webpack/vue-cli-config.html#基本配置" class="sidebar-link">基本配置</a></li><li class="sidebar-sub-header"><a href="/NeveSto-Blog/webpack/vue-cli-config.html#配置externals-忽略打包第三方库-配置如下" class="sidebar-link">配置externals 忽略打包第三方库 配置如下</a></li></ul></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" class="sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="基本配置"><a href="#基本配置" class="header-anchor">#</a> 基本配置</h2> <div class="language- extra-class"><pre class="language-text"><code>const UglifyJsPlugin = require('uglifyjs-webpack-plugin')//生产环境取消打印
+const CompressionWebpackPlugin = require('compression-webpack-plugin')//gzip压缩
+function getPagesInfo() {
+    let pages = {}
+    const glob = require('glob') // 引入glob模块,用于扫描全部src/pages/**/main.js（返回的是一个数组）
+    glob.sync('src/pages/**/main.js').forEach((entry, i) =&gt; {
+        let name = entry.slice(10, -8)
+        pages[name] = {
+            entry: entry,
+            template: 'public.index.html',
+            filename: name + '.html',
+            title: '',
+            chunks: [&quot;chunk-vendors&quot;, &quot;chunk-common&quot;, name]
+        }
+    })
+    return pages
+}
+
+module.exports = {
+    pages: getPagesInfo(),//多页面应用配置
+    // baseUrl 从 Vue CLI 3.3 起已弃用 对应index.html里面的BASE_URL
+    publicPath: process.env.NODE_ENV === 'production'
+    ? '/my-app/' // https://www.my-app.com/my-app/ 部署在子路劲上
+    : '/',
+    assetsDir: '', // Default: ''
+    outputDir: 'dist', // Default: 'dist' 生成的生产环境构建文件的目录
+    productionSourceMap: false, // 生产环境的 source map，可以将其设置为 false 以加速生产环境构建，默认值是true
+    devServer: {
+    open: true,             //自动打开浏览器
+    host: 'localhost',      //默认打开域名
+    port: 8080,             //默认打开端口号
+    https: false,           //开启关闭https请求
+    hot: false,         //热更
+    proxy: {
+      // 配置跨域
+      '/api': {
+        target: 'http://dev.aabb.cn:8082/', //代理地址，这里设置的地址会代替axios中设置的baseURL
+        ws: true,   //// proxy websockets
+        changeOrigin: true,// 如果接口跨域，需要进行这个参数配置
+        pathRewrite: {                //pathRewrite方法重写url
+          '^/api': '/',
+        },
+      },
+    },
+  },
+  chainWebpack: config =&gt; {
+    config.resolve.alias
+      .set(&quot;@&quot;, resolve(&quot;src&quot;))
+      .set(&quot;@v&quot;, resolve(&quot;src/views&quot;))
+      .set(&quot;@c&quot;, resolve(&quot;src/components&quot;))
+      .set(&quot;@u&quot;, resolve(&quot;src/utils&quot;))
+      .set(&quot;@s&quot;, resolve(&quot;src/service&quot;)); /* 别名配置 */
+    config.optimization.runtimeChunk(&quot;single&quot;);
+  },
+  configureWebpack: (config) =&gt; {
+          // 为生产环境修改配置
+        if (process.env.NODE_ENV === 'production') {
+      
+            config.plugins.push(
+                  // 1、取消打印
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        compress: {
+                            drop_debugger: true,//生产环境自动删除debugger
+                            drop_console: true, //生产环境自动删除console
+                        },
+                        warnings: false,
+                    },
+                    sourceMap: false,   //关掉sourcemap 会生成对于调试的完整的.map文件，但同时也会减慢打包速度
+                    parallel: true, //使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。
+                }),
+
+                // 2、gzip压缩
+                new CompressionWebpackPlugin({
+                    filename: '[path].gz[query]',
+                    algorithm: 'gzip',
+                    test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+                    threshold: 10240,
+                    minRatio: 0.8,
+                })
+            )
+        }
+
+        config.output.filename = `[name].${Version}.${Timestamp}.js`  //打包生成的文件
+        config.output.chunkFilename = `[name].${Version}.${Timestamp}.js`
+    },
+    pluginOptions: {
+        &quot;style-resources-loader&quot;: {
+            preProcessor: &quot;less&quot;,
+            patterns: [
+                //这个是加上自己的路径，
+                //注意：试过不能使用别名路径
+                path.resolve(__dirname, &quot;./src/assets/variable.less&quot;)
+            ]
+        }
+    },
+    css: {
+        loaderOptions: {
+        sass: {
+        // @是src的别名
+        data: `
+            @import &quot;@/assets/variable.scss&quot;;
+        `
+        }
+        }
+    }
+}
+
+</code></pre></div><h2 id="配置externals-忽略打包第三方库-配置如下"><a href="#配置externals-忽略打包第三方库-配置如下" class="header-anchor">#</a> 配置externals 忽略打包第三方库 配置如下</h2> <div class="language- extra-class"><pre class="language-text"><code>const cdn = {
+  // 忽略打包的第三方库
+  /**
+  * externals 对象属性解析：
+  * '包名' : '在项目中引入的名字'
+  * 以element-ui举例 我再main.js里是以
+  * import ELEMENT from 'element-ui'
+  * Vue.use(ELEMENT, { size: 'small' })
+  * 这样引入的，所以我的externals的属性值应该是ELEMENT
+  */
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+    'element-ui': 'ELEMENT'
+  },
+  js: [
+    'https://cdn.jsdelivr.net/npm/vue',
+    'https://unpkg.com/vue-router/dist/vue-router.js',
+    'https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js',
+    'https://unpkg.com/element-ui@2.13.2/lib/index.js'
+  ],
+  css: [
+    'https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css'
+  ]
+}
+chainWebpack: (config) =&gt; {
+		if (isProduction) {
+	      config.plugin('html').tap((args) =&gt; {
+	        args[0].cdn = cdn
+	        return args
+	      })
+    	}
+    	config.plugin('html').tap(args =&gt; { // 所有环境配置统一的title
+	        args[0].title = '外部联网协议配置系统'
+	        return args
+      })
+	}
+
+	configureWebpack: config =&gt; {
+		config.externals = cdn.externals
+	}
+</code></pre></div><h3 id="index-html如下"><a href="#index-html如下" class="header-anchor">#</a> index.html如下</h3> <div class="language- extra-class"><pre class="language-text"><code>css
+&lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp; htmlWebpackPlugin.options.cdn.css) { %&gt;
+      &lt;link href=&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot; rel=&quot;preload&quot; as=&quot;style&quot;&gt;
+      &lt;link href=&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;% } %&gt;
+    js
+&lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp; htmlWebpackPlugin.options.cdn.js) { %&gt;
+      &lt;script src=&quot;&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;&quot;&gt;&lt;/script&gt;
+    &lt;% } %&gt;
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/webpack/loader-plugins.html" class="prev">
+        loader-plugins
+      </a></span> <span class="next"><a href="/NeveSto-Blog/webpack/interview.html">
+        面试题
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/18.2a329bec.js" defer></script>
+  </body>
+</html>

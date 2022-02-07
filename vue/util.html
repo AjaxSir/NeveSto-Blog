@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于vue部分使用技巧 | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/11.f9b656b5.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/12.c998cec7.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/16.e235edcf.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/18.2a329bec.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/9.d8101432.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable open"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" aria-current="page" class="active sidebar-link">vue部分技巧</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/NeveSto-Blog/vue/util.html#关于vue部分使用技巧" class="sidebar-link">关于vue部分使用技巧</a></li></ul></li><li><a href="/NeveSto-Blog/vue/slot.html" class="sidebar-link">vue插槽</a></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" class="sidebar-link">loader-plugins</a></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" class="sidebar-link">vue-cli中vue-config配置</a></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" class="sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="关于vue部分使用技巧"><a href="#关于vue部分使用技巧" class="header-anchor">#</a> 关于vue部分使用技巧</h2> <h3 id="_1、自动化全局注册组件"><a href="#_1、自动化全局注册组件" class="header-anchor">#</a> 1、自动化全局注册组件</h3> <div class="language- extra-class"><pre class="language-text"><code>import Vue from 'vue'
+
+// 处理首字母大写 abc =&gt; Abc
+function changeStr(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+  // require.context()函数接收三个参数:
+  // 1.directory{String} - 文件夹路径
+  // 2.useSubdirectories{Boolean} - 是否遍历文件的子目录
+  // 3.regExp{RegExp} - 匹配文件的正则
+const files = require.context('.', false, /\.vue$/);
+
+files.keys().forEach(fileName =&gt; {
+  // files作为一个函数,也接受一个参数request,这个和resolve方法的request参数是一样的,即匹配文件的相对路径,而files函数返回的是一个模块,这个模块才是我们想要的
+  const module = files(fileName);
+  console.log('module:' + module);
+  const compName = changeStr(
+    fileName.replace(/^\.\//, '').replace(/\.\w+$/, '')  //  ./Child1.vue =&gt; Child1
+  )
+
+  Vue.component(compName, module.default || module)  // 动态注册该目录下所有的.vue文件
+});
+之后在main.js引入该文件
+</code></pre></div><h3 id="extend拓展"><a href="#extend拓展" class="header-anchor">#</a> extend拓展</h3> <ul><li>用法<br>
+使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。<br>
+data 选项是特例，需要注意 - 在 Vue.extend() 中它必须是函数</li> <li>自建一个toast组件</li></ul> <h4 id="先定一个一个toast-vue组件-也可进一步"><a href="#先定一个一个toast-vue组件-也可进一步" class="header-anchor">#</a> 先定一个一个toast.vue组件 也可进一步</h4> <div class="language- extra-class"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div id=&quot;toast&quot; class=&quot;toast&quot; v-if=&quot;showWrap&quot; :class=&quot;showContent ?'fadein':'fadeout'&quot;&gt;
+  
+  {{
+    text
+  }}
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.3rem;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 0.65rem;
+  text-align: justify;
+}
+.fadein {
+  animation: animate_in 0.25s;
+}
+.fadeout {
+  animation: animate_out 0.25s;
+  opacity: 0;
+}
+@keyframes animate_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animate_out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+&lt;/style&gt;
+
+
+</code></pre></div><h4 id="使用extend将定义的toast-vue组件封装挂载"><a href="#使用extend将定义的toast-vue组件封装挂载" class="header-anchor">#</a> 使用extend将定义的toast.vue组件封装挂载</h4> <div class="language- extra-class"><pre class="language-text"><code>import vue from 'vue'
+
+//静态组件
+import toastComponent from './toast.vue'
+
+// 返回一个扩展实力构造器
+const ToastConstructor = vue.extend(toastComponent)
+
+// 定义弹出组件的函数 两个参数 显示文本和显示时间
+function showToast(text, showtime = 3000) {
+    const toastDom = new ToastConstructor({
+        el: document.createElement('div'),
+        data() {
+            return {
+                text: text,
+                showWrap: true,    // 是否显示组件
+                showContent: true  // 作用:在隐藏组件之前,显示隐藏动画
+            }
+        }
+    })
+
+    // 把实例化的toast.vue 添加到body中
+    document.body.appendChild(toastDom.$el)
+
+    //隐藏
+    setTimeout(() =&gt; {
+        toastDom.showContent = false;
+    }, showtime - 1250)
+    // 过了 showtime 时间后隐藏整个组件
+    setTimeout(() =&gt; {
+        toastDom.showWrap = false;
+    }, showtime)
+}
+
+// 注册为全局组件的函数
+// 将组件注册到 vue 的 原型链里去,
+// 这样就可以在所有 vue 的实例里面使用 this.$toast()
+function registryToast() {
+    vue.prototype.$toast = showToast
+}
+
+export default registryToast
+</code></pre></div><h4 id="在main-js中"><a href="#在main-js中" class="header-anchor">#</a> 在main.js中</h4> <div class="language- extra-class"><pre class="language-text"><code>// 注册自定义toast组件
+import toastRegistry from './components/common/toast/toast'
+Vue.use(toastRegistry)
+
+</code></pre></div><h4 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h4> <div class="language- extra-class"><pre class="language-text"><code>this.$toast('弹框')
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="prev">
+        2.x源码简要分析
+      </a></span> <span class="next"><a href="/NeveSto-Blog/vue/slot.html">
+        vue插槽
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/13.6a5f96ae.js" defer></script>
+  </body>
+</html>

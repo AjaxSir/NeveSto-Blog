@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue 2.x 简单实现 | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/12.c998cec7.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/11.f9b656b5.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/16.e235edcf.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/18.2a329bec.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/9.d8101432.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable open active"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" aria-current="page" class="active sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" class="sidebar-link">vue部分技巧</a></li><li><a href="/NeveSto-Blog/vue/slot.html" class="sidebar-link">vue插槽</a></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" class="sidebar-link">loader-plugins</a></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" class="sidebar-link">vue-cli中vue-config配置</a></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" class="sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-2-x-简单实现"><a href="#vue-2-x-简单实现" class="header-anchor">#</a> vue 2.x 简单实现</h1> <p>第一步：实现vue构造函数</p> <div class="language- extra-class"><pre class="language-text"><code>
+new Vue({
+    el: '#app',
+    data: {
+        test: '测试',
+        home: '主页'
+    }
+})
+
+</code></pre></div><p>第二步：初步vue构造函数</p> <div class="language- extra-class"><pre class="language-text"><code>class Vue {
+    constructor(option) {
+      this.el = document.querySelector(option.el)
+      this.$data = option.data
+    }
+}
+</code></pre></div><p>第三步: 将传入的data数据添加set get属性为后面双向绑定做准备</p> <div class="language- extra-class"><pre class="language-text"><code>./src/build.js
+class Vue {
+    constructor(option) {
+      this.el = document.querySelector(option.el)
+      this.$data = option.data
+      this.Observe(this.$data)
+    }
+    // 数据监听器也是发布者
+    Observe(data) {
+        for (let key in data) {
+            let value = data[key]
+            // configurable 控制是否可以删除 writable 控制是否可以修改(赋值)
+            Object.defineProperty(this.$data, key, {
+              enumerable: true, // 可枚举
+              configurable: true,
+              writable: true,
+                get: function() {
+                    return value
+                },
+                set: function(newVal) {
+                    if (value !== newVal) {
+                        value = newVal
+                    }
+                }
+            })
+        }
+    }
+}
+</code></pre></div><p>第四步: 实现html编译</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;
+        &lt;%= htmlWebpackPlugin.options.title %&gt;
+    &lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;app&quot; class=&quot;single&quot;&gt;
+        &lt;div v-text=&quot;test&quot;&gt;&lt;/div&gt;
+        &lt;div v-text=&quot;home&quot;&gt;&lt;/div&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;home&quot;&gt;
+    &lt;/div&gt;
+    &lt;img src=&quot;./img/logo.jpeg&quot; alt=&quot;&quot;&gt;
+&lt;/body&gt;
+&lt;script src=&quot;./src/build.js&quot;&gt;&lt;/script&gt;
+
+&lt;/html&gt;
+</code></pre></div><p>编译部分代码,获取节点属性 通过节点属性 并收集对应的订阅</p> <div class="language- extra-class"><pre class="language-text"><code>// 编译器，负责指令解析，创建订阅者等
+    Combile(el) {
+        for (var i = 0; i &lt; el.children.length; i++) {
+            const children = el.children[i]
+            if (children.children.length) {
+                this.Combile(children)
+            } else {
+                if (children.hasAttribute('v-text')) {
+                    var val = children.getAttribute('v-text')
+                    this.dir[val].push(new Watcher(children, 'innerHTML', val, this.$data))
+                }
+                if (children.hasAttribute('v-model')) {
+                    const val = children.getAttribute('v-model')
+                    this.dir[val].push(new Watcher(children, 'value', val, this.$data))
+                    children.addEventListener('input', function(value) {
+                        this.$data[val] = children.value
+                    }.bind(this)) // 改变this指向 或者使用箭头函数
+                }
+            }
+        }
+    }
+    // 订阅者，收到数据更新去更新视图
+class Watcher {
+    constructor(node, type, key, data) {
+        this.node = node // 当前节点
+        this.type = type // 节点内容
+        this.key = key // data内的key值
+        this.$data = data // 构造vue时传入的data值
+        this.update() // 更新节点的值
+    }
+    update() {
+        this.node[this.type] = this.$data[this.key]
+    }
+}
+</code></pre></div><p>完成代码:</p> <div class="language- extra-class"><pre class="language-text"><code>
+class Vue {
+    constructor(option) {
+        this.el = document.querySelector(option.el)
+        this.$data = option.data
+        this.dir = {} // 起收集订阅者作用 dir: { test: [], home: []  } 对data的属性收集订阅
+        this.Observe(this.$data)
+        this.Combile(this.el)
+    }
+    // 数据监听器也是发布者
+    Observe(data) {
+        for (let key in data) {
+            this.dir[key] = []
+            let value = data[key]
+            const watcher = this.dir[key]
+            // configurable 控制是否可以删除 writable 控制是否可以修改(赋值)
+            Object.defineProperty(this.$data, key, {
+              enumerable: true, // 可枚举
+              configurable: true,
+              writable: true,
+                get: function() {
+                    return value
+                },
+                set: function(newVal) {
+                    if (value !== newVal) {
+                        value = newVal
+                        watcher.forEach(item =&gt; {
+                            item.update()
+                        })
+                    }
+                }
+            })
+        }
+    }
+    // 编译器，负责指令解析，创建订阅者等
+    Combile(el) {
+        for (var i = 0; i &lt; el.children.length; i++) {
+            const children = el.children[i]
+            if (children.children.length) {
+                this.Combile(children)
+            } else {
+                if (children.hasAttribute('v-text')) {
+                    var val = children.getAttribute('v-text')
+                    this.dir[val].push(new Watcher(children, 'innerHTML', val, this.$data))
+                }
+                if (children.hasAttribute('v-model')) {
+                    const val = children.getAttribute('v-model')
+                    this.dir[val].push(new Watcher(children, 'value', val, this.$data))
+                    children.addEventListener('input', function(value) {
+                        this.$data[val] = children.value
+                    }.bind(this)) // 改变this指向 或者使用箭头函数
+                }
+            }
+        }
+    }
+    // 订阅者，收到数据更新去更新视图
+class Watcher {
+    constructor(node, type, key, data) {
+        this.node = node // 当前节点
+        this.type = type // 节点内容
+        this.key = key // data内的key值
+        this.$data = data // 构造vue时传入的data值
+        this.update() // 更新节点的值
+    }
+    update() {
+        this.node[this.type] = this.$data[this.key]
+    }
+}
+
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/" class="prev router-link-active">
+        欢迎学习
+      </a></span> <span class="next"><a href="/NeveSto-Blog/vue/util.html">
+        vue部分技巧
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/12.c998cec7.js" defer></script>
+  </body>
+</html>

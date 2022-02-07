@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于vue中使用slot | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/11.f9b656b5.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/12.c998cec7.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/16.e235edcf.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/18.2a329bec.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/9.d8101432.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable open"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" class="sidebar-link">vue部分技巧</a></li><li><a href="/NeveSto-Blog/vue/slot.html" aria-current="page" class="active sidebar-link">vue插槽</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/NeveSto-Blog/vue/slot.html#关于vue中使用slot" class="sidebar-link">关于vue中使用slot</a></li></ul></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" class="sidebar-link">loader-plugins</a></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" class="sidebar-link">vue-cli中vue-config配置</a></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" class="sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="关于vue中使用slot"><a href="#关于vue中使用slot" class="header-anchor">#</a> 关于vue中使用slot</h2> <ul><li>循环时使用插槽 并从插槽传值至父组件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>使用
+&lt;ApprovedRecord :list='list'&gt;
+        &lt;template #info='{info, color}'&gt;
+        // 可能list中需要显示的字段不同 需这样处理
+            &lt;p :style=&quot;{ color }&quot;&gt;{{ info.personListStr }}&lt;/p&gt;
+        &lt;/template&gt;
+    &lt;/ApprovedRecord&gt;
+</code></pre></div><ul><li>组件内部</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;div class=&quot;list-cont&quot;&gt;
+      &lt;div class=&quot;single&quot; v-for='(item, idx) in list' :key=&quot;idx&quot;&gt;
+          &lt;div class=&quot;lt&quot;&gt;
+              &lt;slot name='info' :info='item' :color=&quot;idx &lt;= active ? activeColor : normalColor &quot;&gt;
+              &lt;/slot&gt;
+              // &lt;p :style=&quot;{ color }&quot;&gt;{{ info.personListStr }}&lt;/p&gt;
+              &lt;van-icon size=&quot;20px&quot; v-if='item.personList.length &gt; 1' :color=&quot;idx &lt;= active ? activeColor : normalColor&quot; name=&quot;friends-o&quot; /&gt;
+              &lt;van-icon size=&quot;20px&quot; v-else :color=&quot;idx &lt;= active ? activeColor : normalColor&quot; name=&quot;user-o&quot; /&gt;
+              &lt;van-icon class=&quot;record-status&quot; v-if='item.status == &quot;pass&quot;' color=&quot;#3b9449&quot; name=&quot;checked&quot; /&gt;
+              &lt;van-icon class=&quot;record-status&quot; v-if='item.status == &quot;reject&quot;' color=&quot;red&quot; name=&quot;info&quot; /&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;gt&quot; v-if='idx != list.length - 1'&gt;
+              &lt;van-divider :style=&quot;{ borderColor:  idx &lt;= active ? activeColor : normalColor }&quot;  /&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;NoData position='static' words='暂无审批记录' v-if='!list.length' /&gt;
+  &lt;/div&gt;
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/vue/util.html" class="prev">
+        vue部分技巧
+      </a></span> <span class="next"><a href="/NeveSto-Blog/vue/vue3.html">
+        vue3.x
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/11.f9b656b5.js" defer></script>
+  </body>
+</html>

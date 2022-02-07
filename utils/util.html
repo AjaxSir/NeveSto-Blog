@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>工作中常用函数工具收集 | NeveSto Blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    
+    <meta name="description" content="要点记录">
+    
+    <link rel="preload" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css" as="style"><link rel="preload" href="/NeveSto-Blog/assets/js/app.818cd35b.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/2.dec4ec16.js" as="script"><link rel="preload" href="/NeveSto-Blog/assets/js/9.d8101432.js" as="script"><link rel="prefetch" href="/NeveSto-Blog/assets/js/10.441989ef.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/11.f9b656b5.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/12.c998cec7.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/13.6a5f96ae.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/14.24447786.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/15.a272a7be.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/16.e235edcf.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/17.157f320b.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/18.2a329bec.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/3.c4abdd97.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/4.eca73551.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/5.a35c9f30.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/6.7d712d26.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/7.1819e404.js"><link rel="prefetch" href="/NeveSto-Blog/assets/js/8.6772b36d.js">
+    <link rel="stylesheet" href="/NeveSto-Blog/assets/css/0.styles.fa9d2373.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/NeveSto-Blog/" class="home-link router-link-active"><!----> <span class="site-name">NeveSto Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/NeveSto-Blog/" aria-current="page" class="sidebar-link">欢迎学习</a></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/vue/sourceCodeAnalysis" class="sidebar-heading clickable"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/vue/sourceCodeAnalysis.html" class="sidebar-link">2.x源码简要分析</a></li><li><a href="/NeveSto-Blog/vue/util.html" class="sidebar-link">vue部分技巧</a></li><li><a href="/NeveSto-Blog/vue/slot.html" class="sidebar-link">vue插槽</a></li><li><a href="/NeveSto-Blog/vue/vue3.html" class="sidebar-link">vue3.x</a></li><li><a href="/NeveSto-Blog/vue/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/webpack/structure" class="sidebar-heading clickable"><span>webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/webpack/structure.html" class="sidebar-link">webpack构建</a></li><li><a href="/NeveSto-Blog/webpack/loader-plugins.html" class="sidebar-link">loader-plugins</a></li><li><a href="/NeveSto-Blog/webpack/vue-cli-config.html" class="sidebar-link">vue-cli中vue-config配置</a></li><li><a href="/NeveSto-Blog/webpack/interview.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/NeveSto-Blog/mobile/Adaptation" class="sidebar-heading clickable"><span>mobile</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/NeveSto-Blog/mobile/Adaptation.html" class="sidebar-link">移动端适配</a></li></ul></section></li><li><a href="/NeveSto-Blog/utils/util.html" aria-current="page" class="active sidebar-link">工作常用工具类</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="工作中常用函数工具收集"><a href="#工作中常用函数工具收集" class="header-anchor">#</a> 工作中常用函数工具收集</h1> <p>1、async await 错误处理方法</p> <div class="language- extra-class"><pre class="language-text"><code>/* 方法抽取 */
+const to = promise =&gt; {
+  return promise.then(res =&gt; [null, res]).catch(error =&gt; [error]);
+};
+</code></pre></div><p>举个栗子:</p> <div class="language- extra-class"><pre class="language-text"><code>let flag = true;
+
+function fetchVehicle() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      if (flag) {
+        resolve(true);
+      } else {
+        reject(false);
+      }
+    }, 1000);
+  });
+}
+
+async function fn() {
+  // 每个异步都需要处理
+  let [error, res] = await to(fetchVehicle())
+  console.log(&quot;error&quot;, error);
+  console.log(&quot;res&quot;, res);
+}
+
+fn();
+</code></pre></div><p>2、判断及获取类型</p> <div class="language- extra-class"><pre class="language-text"><code>export function getType (val) {
+  return Object.prototype.toString.call(val).slice(8,-1)
+}
+export function isObject(val) {
+  return Object.prototype.toString.call(val).slice(8,-1) === 'Object'
+}
+export function isArray(val) {
+  return Object.prototype.toString.call(val).slice(8,-1) === 'Array'
+}
+export function isString(val) {
+  return Object.prototype.toString.call(val).slice(8,-1) === 'String'
+}
+</code></pre></div><p>3、 获取 url 中的参数</p> <div class="language- extra-class"><pre class="language-text"><code>export function getUrlParam() {
+  const href = window.location.href
+  const i = href.indexOf(&quot;?&quot;);
+  if (i &lt; 0) return null;
+  const str = href.slice(i);
+  if (!str) return null;
+  const arr = str.match(/([^?&amp;=#]+)=([^?&amp;=#/]*)/g);
+  if (!arr) return null;
+  const obj = {}
+  arr.forEach(v =&gt; {
+    const temp = v.split('=');
+    if (temp.length &gt; 0) {
+      obj[temp[0]] = temp[1];
+    }
+  })
+  if (name) return obj[name]
+  return obj
+}
+
+</code></pre></div><p>4、防抖及节流函数</p> <div class="language- extra-class"><pre class="language-text"><code>// 防抖
+export function debounce(fn, time = 200) {
+  let timeout = null // 创建一个标记用来存放定时器的返回值
+  return function() {
+    clearTimeout(timeout) // 每当用户输入的时候把前一个 setTimeout clear 掉
+    timeout = setTimeout(() =&gt; { // 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
+      fn.apply(this, arguments)
+    }, time)
+  }
+}
+// 节流
+export function _throttle(fn, interval = 200) {
+  var last
+  var timer
+  return function() {
+    var th = this
+    var args = arguments
+    var now = +new Date()
+    if (last &amp;&amp; now - last &lt; interval) {
+      clearTimeout(timer)
+      timer = setTimeout(function() {
+        last = now
+        fn.apply(th, args)
+      }, interval)
+    } else {
+      last = now
+      fn.apply(th, args)
+    }
+  }
+}
+
+使用:
+methods: {
+  doSomeThings:debounce(() =&gt; {
+
+  })
+}
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/NeveSto-Blog/mobile/Adaptation.html" class="prev">
+        移动端适配
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/NeveSto-Blog/assets/js/app.818cd35b.js" defer></script><script src="/NeveSto-Blog/assets/js/2.dec4ec16.js" defer></script><script src="/NeveSto-Blog/assets/js/9.d8101432.js" defer></script>
+  </body>
+</html>
